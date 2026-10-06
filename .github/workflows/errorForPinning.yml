@@ -8,6 +8,11 @@ jobs:
   upload-coverage:
     runs-on: ubuntu-latest
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@351661ca32ac09a36dc5ee2d536e3128f2a3c8ed # v2.22.0
+        with:
+          egress-policy: audit
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         
